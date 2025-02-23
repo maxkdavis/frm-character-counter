@@ -1,0 +1,43 @@
+header {
+  margin-bottom: 25px;
+}
+
+#user-input {
+  font-family: inherit;
+  display: block;
+  width: 800px;
+  height: 200px;
+  margin-bottom: 25px;
+}
+
+.criteria-options {
+  margin-bottom: 25px;
+}
+
+.stats-container {
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
+  margin-bottom: 25px;
+}
+
+.box {
+  padding: 25px;
+}
+
+.box > span {
+  font-size: var(--text-preset-1-font-size);
+}
+
+.characters {
+  border: 1px solid purple;
+}
+
+.words {
+  border: 1px solid orange;
+}
+
+.sentences {
+  border: 1px solid orangered;
+}
