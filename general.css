@@ -87,7 +87,9 @@ Medium: xxxx
 }
 
 body {
+  font-family: 'DM Sans', sans-serif;
   background-image: url('assets/images/bg-light-theme.png');
   line-height: 1;
   min-height: 100vh;
+  padding: 100px;
 }

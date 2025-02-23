@@ -11,20 +11,41 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header>Analyze your text in real-time. Start typing here… (or paste your text)</header>
+    <header>
+      <h1>Analyze your text in real-time.</h1>
+    </header>
     <main>
-      Exclude Spaces Set Character Limit Approx. reading time:
-      <!-- Insert number -->
-      minutes
+      <textarea
+        name="textarea-user-input"
+        id="textarea-user-input"
+        placeholder="Start typing here… (or paste your text)"
+      ></textarea>
+      <div class="criteria-options">Exclude Spaces Set Character Limit Approx. reading time: minutes</div>
+
+      <div class="stats-container">
+        <div class="characters box">
+          <span class="character-count">00</span>
+          <p>Total Characters</p>
+        </div>
+        <div class="words box">
+          <span class="word-count">00</span>
+          <p>Word Count</p>
+        </div>
+        <div class="sentences box">
+          <span class="sentence-count">00</span>
+          <p>Sentence Count</p>
+        </div>
+      </div>
+
+      <div class="letter-density-container">
+        <h2>Letter Density</h2>
+        <p>No characters found. Start typing to see letter density.</p>
+      </div>
 
       <!-- Insert number -->
-      Total Characters
-
       <!-- Insert number -->
-      Word Count
-
       <!-- Insert number -->
-      Sentence Count Letter Density No characters found. Start typing to see letter density.
+      <!-- Insert number -->
     </main>
   </body>
 </html>
