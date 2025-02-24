@@ -16,7 +16,17 @@
     </header>
     <main>
       <textarea name="user-input" id="user-input" placeholder="Start typing here… (or paste your text)"></textarea>
-      <div class="criteria-options">Exclude Spaces Set Character Limit Approx. reading time: minutes</div>
+      <div class="criteria-options">
+        <div class="criteria">
+          <input type="checkbox" id="checkbox-space" />
+          <label for="checkbox-space">Exclude Spaces</label>
+        </div>
+        <div class="criteria">
+          <input type="checkbox" id="checkbox-limit" />
+          <label for="checkbox-limit">Set Character Limit</label>
+        </div>
+        <p>Approx. reading time: <span class="duration">0 minutes</span></p>
+      </div>
 
       <div class="stats-container">
         <div class="characters box">
