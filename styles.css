@@ -46,3 +46,7 @@ header {
 .sentences {
   border: 1px solid orangered;
 }
+
+.excludedText {
+  visibility: hidden;
+}
