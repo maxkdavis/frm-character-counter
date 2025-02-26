@@ -47,6 +47,6 @@ header {
   border: 1px solid orangered;
 }
 
-.excludedText {
+.hidden {
   visibility: hidden;
 }
