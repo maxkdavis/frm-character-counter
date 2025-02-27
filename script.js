@@ -1,14 +1,23 @@
 const userInputEl = document.getElementById('user-input');
-const spacesCheckbox = document.getElementById('checkbox-space');
+const checkboxSetSpacesEl = document.getElementById('checkbox-space');
+const checkboxSetCharLimitEl = document.getElementById('checkbox-set-limit');
+const inputCharLimitEl = document.getElementById('input-char-limit');
 const noSpaceTextEl = document.querySelector('.no-space-text');
 let characterCounter = 0;
 let wordCounter = 0;
 let sentenceCounter = 0;
 
-spacesCheckbox.addEventListener('change', function () {
+// Handles 'Exclude Spaces' checkbox
+checkboxSetSpacesEl.addEventListener('change', function () {
   noSpaceTextEl.classList.toggle('hidden');
 });
 
+// Handles 'Set Character Limit' checkbox
+checkboxSetCharLimitEl.addEventListener('change', function () {
+  inputCharLimitEl.classList.toggle('hidden');
+});
+
+//Handle's any changes within our textarea
 userInputEl.addEventListener('input', function (e) {
   displayCharCount(e.target.value);
   displayWordCount(e.target.value);
@@ -16,7 +25,7 @@ userInputEl.addEventListener('input', function (e) {
 });
 
 function displayCharCount(str) {
-  if (!spacesCheckbox.checked) {
+  if (checkboxSetSpacesEl.checked) {
     characterCounter = str.length;
     formattedCharStr = characterCounter.toString().padStart(2, '0');
     document.querySelector('.character-count').innerText = formattedCharStr;
@@ -27,6 +36,7 @@ function displayCharCount(str) {
     formattedCharStr = characterCounter.toString().padStart(2, '0');
     document.querySelector('.character-count').innerText = formattedCharStr;
   }
+  //TRY HERE FIRST TO CHECK CHAR LIMIT
 }
 
 function displayWordCount(str) {
@@ -46,3 +56,8 @@ function displaySentenceCount(str) {
   formattedSentencesStr = sentenceCounter.toString().padStart(2, '0');
   document.querySelector('.sentence-count').innerText = formattedSentencesStr;
 }
+
+//working on 'Set Character Limit' checkbox.
+//user clicks checkbox to set limit
+//user enters a limit number (check to make sure it's a number)
+//if

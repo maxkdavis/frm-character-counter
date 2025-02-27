@@ -16,6 +16,22 @@ header {
   margin-bottom: 40px;
 }
 
+/* Set Character Limit */
+.input-char-limit {
+  margin-left: 5px;
+  padding: 3px 1px;
+  width: 50px;
+  border-radius: 4px;
+  border: 1px solid #333;
+  font-family: inherit;
+  text-align: center;
+  visibility: visible;
+}
+
+.input-char-limit.hidden {
+  visibility: hidden;
+}
+
 .stats-container {
   border: 1px solid red;
   display: flex;
