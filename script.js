@@ -29,10 +29,9 @@ function displayCharCount(str) {
 
 function displayWordCount(str) {
   const trimmedStr = str.trim(); //remove leading and trailing spaces
-  const words = trimmedStr.split(' ').filter((word) => word !== ' ');
+  // "if trimmedStr is truthy then create and array where each word from my sentence that's separated by a space (' ') becomes an array item. From there chain on the filter() array method and filter for array items that don't equal and empty string. If trimmedStr is falsy just return an empty array (0 in length)
+  const words = trimmedStr ? trimmedStr.split(' ').filter((word) => word !== '') : [];
   wordCounter = words.length;
   formattedWordStr = wordCounter.toString().padStart(2, '0');
   document.querySelector('.word-count').innerText = formattedWordStr;
 }
-
-//why does word count show 1 after i deleted everything??
