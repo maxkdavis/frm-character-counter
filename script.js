@@ -12,13 +12,24 @@ checkboxSetSpacesEl.addEventListener('change', function () {
   noSpaceTextEl.classList.toggle('hidden');
 });
 
-// Handles 'Set Character Limit' checkbox
+// toggle 'Set Character Limit' checkbox
 checkboxSetCharLimitEl.addEventListener('change', function () {
-  inputCharLimitEl.classList.toggle('hidden');
+  inputCharLimitEl.style.visibility = this.checked ? 'visible' : 'hidden';
+  inputCharLimitEl.value = ''; // clear input when unchecked
 });
 
 //Handle's any changes within our textarea
 userInputEl.addEventListener('input', function (e) {
+  //handle character limit on input
+  const charLimit = parseInt(inputCharLimitEl.value, 10); // Get limit from user input
+  const currentLength = this.value.length;
+
+  ///NEED TO FIX THIS LOGIC
+
+  if (!isNaN(charLimit) && currentLength > charLimit) {
+    document.body.style.backgroundColor = 'blue';
+  }
+
   displayCharCount(e.target.value);
   displayWordCount(e.target.value);
   displaySentenceCount(e.target.value);
@@ -37,6 +48,9 @@ function displayCharCount(str) {
     document.querySelector('.character-count').innerText = formattedCharStr;
   }
   //TRY HERE FIRST TO CHECK CHAR LIMIT
+  // if (inputCharLimitEl && typeof inputCharLimitEl.value === 'number') {
+  //   console.log(inputCharLimitEl.value);
+  // }
 }
 
 function displayWordCount(str) {

@@ -25,10 +25,6 @@ header {
   border: 1px solid #333;
   font-family: inherit;
   text-align: center;
-  visibility: visible;
-}
-
-.input-char-limit.hidden {
   visibility: hidden;
 }
 
