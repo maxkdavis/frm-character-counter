@@ -3,6 +3,7 @@ const spacesCheckbox = document.getElementById('checkbox-space');
 const noSpaceTextEl = document.querySelector('.no-space-text');
 let characterCounter = 0;
 let wordCounter = 0;
+let sentenceCounter = 0;
 
 spacesCheckbox.addEventListener('change', function () {
   noSpaceTextEl.classList.toggle('hidden');
@@ -11,6 +12,7 @@ spacesCheckbox.addEventListener('change', function () {
 userInputEl.addEventListener('input', function (e) {
   displayCharCount(e.target.value);
   displayWordCount(e.target.value);
+  displaySentenceCount(e.target.value);
 });
 
 function displayCharCount(str) {
@@ -34,4 +36,13 @@ function displayWordCount(str) {
   wordCounter = words.length;
   formattedWordStr = wordCounter.toString().padStart(2, '0');
   document.querySelector('.word-count').innerText = formattedWordStr;
+}
+
+function displaySentenceCount(str) {
+  const trimmedStr = str.trim();
+  //using a regular expression on one or more occurrences of . ? or !
+  const sentences = trimmedStr ? trimmedStr.split(/[.!?]+/).filter((sentence) => sentence.trim() !== '') : [];
+  sentenceCounter = sentences.length;
+  formattedSentencesStr = sentenceCounter.toString().padStart(2, '0');
+  document.querySelector('.sentence-count').innerText = formattedSentencesStr;
 }
