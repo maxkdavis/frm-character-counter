@@ -65,6 +65,8 @@ function displayWordCount(str) {
   wordCounter = words.length;
   formattedWordStr = wordCounter.toString().padStart(2, '0');
   document.querySelector('.word-count').innerText = formattedWordStr;
+  //call function to display 'approx reading time'
+  displayReadTime(wordCounter);
 }
 
 function displaySentenceCount(str) {
@@ -74,4 +76,11 @@ function displaySentenceCount(str) {
   sentenceCounter = sentences.length;
   formattedSentencesStr = sentenceCounter.toString().padStart(2, '0');
   document.querySelector('.sentence-count').innerText = formattedSentencesStr;
+}
+
+function displayReadTime(numWords) {
+  const readTimeEl = document.querySelector('.duration');
+  const readTime =
+    numWords === 0 ? `0 minutes` : numWords < 200 ? `<1 minute` : `${Math.floor(numWords / 200)} minutes`;
+  readTimeEl.innerText = readTime;
 }
