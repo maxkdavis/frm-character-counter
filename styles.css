@@ -27,10 +27,44 @@ header {
   box-shadow: 0px 0px 4px 3px var(--orange-800);
 }
 
+.limit-warning-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  visibility: hidden;
+  position: absolute;
+}
+
+.limit-warning-box.warning {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  visibility: visible;
+  position: relative;
+}
+
+.limit-warning-text {
+  color: var(--orange-800);
+  font-size: 12px;
+}
+
 .criteria-options {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
   margin-bottom: 40px;
+}
+
+.criteria-options > :last-child {
+  margin-left: auto;
+}
+
+.criteria {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 /* Set Character Limit */

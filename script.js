@@ -3,6 +3,7 @@ const checkboxSetSpacesEl = document.getElementById('checkbox-space');
 const checkboxSetCharLimitEl = document.getElementById('checkbox-set-limit');
 const inputCharLimitEl = document.getElementById('input-char-limit');
 const noSpaceTextEl = document.querySelector('.no-space-text');
+const limitWarningEl = document.querySelector('.limit-warning-box');
 let characterCounter = 0;
 let wordCounter = 0;
 let sentenceCounter = 0;
@@ -17,6 +18,7 @@ checkboxSetCharLimitEl.addEventListener('change', function () {
   inputCharLimitEl.style.visibility = this.checked ? 'visible' : 'hidden';
   inputCharLimitEl.value = ''; // clear input when unchecked
   userInputEl.classList.remove('limit-exceeded');
+  limitWarningEl.classList.remove('warning');
 });
 
 //Handle's any changes within our textarea
@@ -27,8 +29,14 @@ userInputEl.addEventListener('input', function (e) {
 
   if (!isNaN(charLimit) && currentLength > charLimit) {
     this.classList.add('limit-exceeded');
+    limitWarningEl.classList.add('warning');
+    document.querySelector(
+      '.limit-warning-text'
+    ).textContent = `Limit reached! Your text exceeds ${inputCharLimitEl.value} characters.`;
+    this.value = this.value.substring(0, charLimit); //trim extra characters
   } else {
     this.classList.remove('limit-exceeded');
+    limitWarningEl.classList.remove('warning');
   }
 
   displayCharCount(e.target.value);
