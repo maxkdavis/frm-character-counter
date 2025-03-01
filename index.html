@@ -5,13 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png" />
-    <!-- <script
-      defer
-      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.min.js"
-      integrity="sha512-L0Shl7nXXzIlBSUUPpxrokqq4ojqgZFQczTYlGjzONGTDAcLremjwaWv5A+EDLnxhQzY5xUZPWLOLqYRkY0Cbw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Frontend Mentor | Character counter</title>
     <link rel="stylesheet" href="general.css" />
     <link rel="stylesheet" href="styles.css" />
@@ -59,6 +53,9 @@
       <div class="letter-density-container">
         <h2>Letter Density</h2>
         <p>No characters found. Start typing to see letter density.</p>
+      </div>
+      <div>
+        <canvas id="myChart"></canvas>
       </div>
 
       <!-- Insert number -->

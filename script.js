@@ -7,6 +7,7 @@ const limitWarningEl = document.querySelector('.limit-warning-box');
 let characterCounter = 0;
 let wordCounter = 0;
 let sentenceCounter = 0;
+let data = []; // Global array to store letter counts.
 
 // Handles 'Exclude Spaces' checkbox
 checkboxSetSpacesEl.addEventListener('change', function () {
@@ -42,6 +43,7 @@ userInputEl.addEventListener('input', function (e) {
   displayCharCount(e.target.value);
   displayWordCount(e.target.value);
   displaySentenceCount(e.target.value);
+  renderLetterDensity(e.target.value);
 });
 
 function displayCharCount(str) {
@@ -84,3 +86,44 @@ function displayReadTime(numWords) {
     numWords === 0 ? `0 minutes` : numWords < 200 ? `<1 minute` : `${Math.floor(numWords / 200)} minutes`;
   readTimeEl.innerText = readTime;
 }
+
+function renderLetterDensity(str) {
+  const letterCounts = {}; //object to track letter frequencies
+  const lettersOnly = str.toUpperCase().replace(/[^A-Z]/g, ''); //keep only A-Z. Removes non-letters
+
+  for (let letter of lettersOnly) {
+    letterCounts[letter] = (letterCounts[letter] || 0) + 1; //if letterCounts[a] does not exist, it'll be undefined which will then short circuit to equal 0. And then we increment by 1 to signify the letter has one instance so far.
+  }
+  // console.log(letterCounts);
+  // Convert letterCounts object into array of {letter, count} objects
+  data = Object.keys(letterCounts)
+    .map((letter) => ({
+      letter,
+      count: letterCounts[letter],
+    }))
+    .sort((a, b) => b.count - a.count); //sort by letter count descening order
+  console.log(data);
+}
+
+// const ctx = document.getElementById('myChart');
+
+// new Chart(ctx, {
+//   type: 'bar',
+//   data: {
+//     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+//     datasets: [
+//       {
+//         label: '# of Votes',
+//         data: [12, 19, 3, 5, 2, 3],
+//         borderWidth: 1,
+//       },
+//     ],
+//   },
+//   options: {
+//     scales: {
+//       y: {
+//         beginAtZero: true,
+//       },
+//     },
+//   },
+// });
