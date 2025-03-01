@@ -8,6 +8,7 @@ let characterCounter = 0;
 let wordCounter = 0;
 let sentenceCounter = 0;
 let data = []; // Global array to store letter counts.
+let chartInstance = null; //Store Chart.js instance
 
 // Handles 'Exclude Spaces' checkbox
 checkboxSetSpacesEl.addEventListener('change', function () {
@@ -43,7 +44,7 @@ userInputEl.addEventListener('input', function (e) {
   displayCharCount(e.target.value);
   displayWordCount(e.target.value);
   displaySentenceCount(e.target.value);
-  renderLetterDensity(e.target.value);
+  getLetterDensity(e.target.value);
 });
 
 function displayCharCount(str) {
@@ -87,7 +88,7 @@ function displayReadTime(numWords) {
   readTimeEl.innerText = readTime;
 }
 
-function renderLetterDensity(str) {
+function getLetterDensity(str) {
   const letterCounts = {}; //object to track letter frequencies
   const lettersOnly = str.toUpperCase().replace(/[^A-Z]/g, ''); //keep only A-Z. Removes non-letters
 
@@ -102,28 +103,40 @@ function renderLetterDensity(str) {
       count: letterCounts[letter],
     }))
     .sort((a, b) => b.count - a.count); //sort by letter count descening order
-  console.log(data);
+
+  //Call function to update the chart
+  renderLetterDensityChart();
 }
 
-// const ctx = document.getElementById('myChart');
+function renderLetterDensityChart() {
+  const ctx = document.getElementById('myChart').getContext('2d');
 
-// new Chart(ctx, {
-//   type: 'bar',
-//   data: {
-//     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-//     datasets: [
-//       {
-//         label: '# of Votes',
-//         data: [12, 19, 3, 5, 2, 3],
-//         borderWidth: 1,
-//       },
-//     ],
-//   },
-//   options: {
-//     scales: {
-//       y: {
-//         beginAtZero: true,
-//       },
-//     },
-//   },
-// });
+  //Destroy previous chart instance if it exists (prevents duplicate charts)
+  if (chartInstance) chartInstance.destroy();
+
+  //Create new chart.js instance
+  chartInstance = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: data.map((item) => item.letter), // X-axis labels (letters)
+      datasets: [
+        {
+          label: 'Letter Frequency',
+          data: data.map((item) => item.count), // Y-axis values (counts)
+          backgroundColor: 'rgba(54, 162, 235, 0.6)', // Bar color
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: { stepSize: 1 }, // Ensure whole numbers
+        },
+      },
+    },
+  });
+}
