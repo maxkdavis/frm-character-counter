@@ -123,18 +123,51 @@ function renderLetterDensityChart() {
         {
           label: 'Letter Frequency',
           data: data.map((item) => item.count), // Y-axis values (counts)
-          backgroundColor: 'rgba(54, 162, 235, 0.6)', // Bar color
-          borderColor: 'rgba(54, 162, 235, 1)',
+          backgroundColor: 'hsl(274, 90%, 80%)', // Bar color
           borderWidth: 1,
+          borderRadius: 100,
+          borderSkipped: false,
         },
       ],
     },
     options: {
+      plugins: {
+        legend: {
+          display: false, // Hide legend
+        },
+        datalabels: {
+          anchor: 'end', // Position label at the end of the bar
+          align: 'right', // Align it towards the right
+          formatter: (value) => value, // Display the value as is
+          color: '#000', // Change text color if needed
+          font: {
+            weight: 'bold',
+          },
+        },
+      },
+      indexAxis: 'y',
       responsive: true,
       scales: {
+        x: {
+          ticks: {
+            display: false, // Hides x-axis labels
+          },
+          grid: {
+            display: false, // ❌ Remove x-axis gridlines
+            drawTicks: false,
+          },
+        },
         y: {
           beginAtZero: true,
-          ticks: { stepSize: 1 }, // Ensure whole numbers
+          grid: {
+            display: false, // ❌ Remove x-axis gridlines
+          },
+          ticks: {
+            font: {
+              size: 18, // Increase font size for y-axis labels
+            },
+            color: 'black',
+          },
         },
       },
     },
