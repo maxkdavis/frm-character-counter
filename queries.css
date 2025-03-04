@@ -1,0 +1,27 @@
+@media (max-width: 1000px) {
+  body {
+    padding: 10px 20px;
+  }
+  .criteria-options {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 550px) {
+  body {
+    color: red;
+  }
+  header > h1 {
+    font-size: 4rem;
+  }
+
+  .criteria-options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .criteria-options > :last-child {
+    text-align: end;
+    margin: 0 auto 0 0;
+  }
+}

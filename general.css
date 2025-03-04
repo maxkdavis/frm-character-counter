@@ -40,3 +40,8 @@ body {
   min-height: 100vh;
   padding: 3.2rem 20rem;
 }
+
+textarea:hover,
+input:hover {
+  cursor: pointer;
+}
