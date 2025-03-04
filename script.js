@@ -121,6 +121,9 @@ function renderLetterDensityChart() {
   //Destroy previous chart instance if it exists (prevents duplicate charts)
   if (chartInstance) chartInstance.destroy();
 
+  //Calculate total count of valid letters
+  const totalLetters = data.reduce((sum, item) => sum + item.count, 0);
+
   //Create new chart.js instance
   chartInstance = new Chart(ctx, {
     type: 'bar',
@@ -134,23 +137,35 @@ function renderLetterDensityChart() {
           borderWidth: 1,
           borderRadius: 100,
           borderSkipped: false,
+          barThickness: 20, //adjust bar thinkness
+          categoryPercentage: 0.7,
         },
       ],
     },
     options: {
-      // responsive: true,
+      responsive: true,
       maintainAspectRatio: false,
+      layout: {
+        padding: {
+          right: 100, // 👈 Adds extra space on the right for labels
+        },
+      },
       plugins: {
         legend: {
           display: false, // Hide legend
         },
         datalabels: {
           anchor: 'end', // Position label at the end of the bar
-          align: 'right', // Align it towards the right
-          formatter: (value) => value, // Display the value as is
+          align: 'end', // Align it towards the end
+          // formatter: (value) => value, // Display the value as is
+
+          formatter: (value) => {
+            const percentage = ((value / totalLetters) * 100).toFixed(2); //Calculate % with 2 decimal places
+            return `${value} (${percentage}%)`;
+          },
           color: '#000', // Change text color if needed
           font: {
-            weight: 'bold',
+            size: 16,
           },
         },
       },
@@ -158,27 +173,31 @@ function renderLetterDensityChart() {
       responsive: true,
       scales: {
         x: {
+          beginAtZero: true,
           ticks: {
             display: false, // Hides x-axis labels
           },
           grid: {
-            display: false, // ❌ Remove x-axis gridlines
+            display: false,
             drawTicks: false,
           },
         },
         y: {
-          beginAtZero: true,
           grid: {
-            display: false, // ❌ Remove x-axis gridlines
+            display: false,
           },
           ticks: {
+            align: 'start',
+            crossAlign: 'center',
             font: {
-              size: 16, // Increase font size for y-axis labels
+              size: 16,
             },
+            // align: 'start',
             color: 'black',
           },
         },
       },
     },
+    plugins: [ChartDataLabels],
   });
 }

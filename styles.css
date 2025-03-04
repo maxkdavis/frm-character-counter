@@ -161,7 +161,6 @@ header > h1 {
 }
 
 #myChart {
-  /* border: 1px solid purple; */
-  width: 100%;
+  width: 95%;
   height: 75rem !important;
 }
