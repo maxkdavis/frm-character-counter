@@ -28,6 +28,7 @@ userInputEl.addEventListener('input', function (e) {
   //handle character limit on input
   const charLimit = parseInt(inputCharLimitEl.value, 10); // Get limit from user input
   const currentLength = this.value.length;
+  const letterDensityTextEl = document.querySelector('.letter-density-text');
 
   if (!isNaN(charLimit) && currentLength > charLimit) {
     this.classList.add('limit-exceeded');
@@ -39,6 +40,12 @@ userInputEl.addEventListener('input', function (e) {
   } else {
     this.classList.remove('limit-exceeded');
     limitWarningEl.classList.remove('warning');
+  }
+
+  if (currentLength > 0) {
+    letterDensityTextEl.style.visibility = 'hidden';
+  } else {
+    letterDensityTextEl.style.visibility = 'visible';
   }
 
   displayCharCount(e.target.value);
@@ -131,6 +138,8 @@ function renderLetterDensityChart() {
       ],
     },
     options: {
+      // responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           display: false, // Hide legend
@@ -164,7 +173,7 @@ function renderLetterDensityChart() {
           },
           ticks: {
             font: {
-              size: 18, // Increase font size for y-axis labels
+              size: 16, // Increase font size for y-axis labels
             },
             color: 'black',
           },

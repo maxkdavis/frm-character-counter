@@ -12,6 +12,10 @@
   </head>
   <body>
     <header>
+      <nav class="navbar">
+        <img src="./assets/images/logo-light-theme.svg" alt="character count app logo" />
+        <button class="btn-mode"><img src="./assets/images/icon-moon.svg" alt="moon icon" /></button>
+      </nav>
       <h1>Analyze your text in real-time.</h1>
     </header>
     <main>
@@ -51,17 +55,12 @@
       </div>
 
       <div class="letter-density-container">
-        <h2>Letter Density</h2>
-        <p>No characters found. Start typing to see letter density.</p>
+        <h2 class="letter-density-header">Letter Density</h2>
+        <p class="letter-density-text">No characters found. Start typing to see letter density.</p>
       </div>
-      <div>
+      <div class="chart-container">
         <canvas id="myChart"></canvas>
       </div>
-
-      <!-- Insert number -->
-      <!-- Insert number -->
-      <!-- Insert number -->
-      <!-- Insert number -->
     </main>
     <script src="script.js"></script>
   </body>
