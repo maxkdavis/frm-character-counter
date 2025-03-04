@@ -102,7 +102,6 @@ function getLetterDensity(str) {
   for (let letter of lettersOnly) {
     letterCounts[letter] = (letterCounts[letter] || 0) + 1; //if letterCounts[a] does not exist, it'll be undefined which will then short circuit to equal 0. And then we increment by 1 to signify the letter has one instance so far.
   }
-  // console.log(letterCounts);
   // Convert letterCounts object into array of {letter, count} objects
   data = Object.keys(letterCounts)
     .map((letter) => ({
