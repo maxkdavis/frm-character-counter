@@ -4,6 +4,8 @@ const checkboxSetCharLimitEl = document.getElementById('checkbox-set-limit');
 const inputCharLimitEl = document.getElementById('input-char-limit');
 const noSpaceTextEl = document.querySelector('.no-space-text');
 const limitWarningEl = document.querySelector('.limit-warning-box');
+const btnDarkMode = document.querySelector('.btn-mode-dark');
+const btnLightkMode = document.querySelector('.btn-mode-light');
 let characterCounter = 0;
 let wordCounter = 0;
 let sentenceCounter = 0;
@@ -200,3 +202,12 @@ function renderLetterDensityChart() {
     plugins: [ChartDataLabels],
   });
 }
+
+//FIX THIS!
+btnDarkMode.addEventListener('click', function () {
+  this.style.classList.toggle('btn-hidden');
+});
+
+btnLightMode.addEventListener('click', function () {
+  this.style.classList.toggle('btn-hidden');
+});

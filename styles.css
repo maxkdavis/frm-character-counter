@@ -13,12 +13,25 @@ header > h1 {
   display: flex;
   justify-content: space-between;
   margin-bottom: 5rem;
+  position: relative;
 }
 
 .btn-mode {
   width: 4.4rem;
   border: none;
   border-radius: 9px;
+  position: absolute;
+  right: 0;
+  height: 100%;
+}
+
+.btn-mode:hover {
+  background-color: #999;
+}
+
+/* Dark/Light Mode */
+.btn-hidden {
+  visibility: hidden;
 }
 
 #user-input {
