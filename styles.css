@@ -16,7 +16,7 @@ header > h1 {
   position: relative;
 }
 
-.btn-mode {
+.btn {
   width: 4.4rem;
   border: none;
   border-radius: 9px;
@@ -25,13 +25,26 @@ header > h1 {
   height: 100%;
 }
 
-.btn-mode:hover {
+.btn-sun {
+  background-color: hsl(235, 1%, 15%);
+}
+
+.btn:hover {
   background-color: #999;
 }
 
 /* Dark/Light Mode */
-.btn-hidden {
-  visibility: hidden;
+.dark-mode {
+  background-image: url('assets/images/bg-dark-theme.png');
+  color: hsl(240, 24%, 96%);
+}
+
+.visible-btn {
+  display: inline-block;
+}
+
+.hidden-btn {
+  display: none;
 }
 
 #user-input {
@@ -40,7 +53,7 @@ header > h1 {
   font-size: 1.5rem;
   display: block;
   width: 100%;
-  padding: 1rem;
+  padding: 1.5rem;
   height: 200px;
   margin-bottom: 15px;
   border: 2px solid hsl(0, 0%, 87%);
@@ -50,18 +63,29 @@ header > h1 {
 }
 
 #user-input::placeholder {
-  color: #000;
+  color: hsl(235, 13%, 19%);
   font-weight: 300;
+  transition: color 0.3s ease;
 }
 
 #user-input:focus {
   outline: none;
   box-shadow: 0px 0px 4px 3px hsl(274, 90%, 73%);
-  background-color: hsl(240, 26%, 92%);
+  /* background-color: hsl(240, 26%, 92%); */
 }
 
 #user-input.limit-exceeded {
   box-shadow: 0px 0px 4px 3px var(--orange-800);
+}
+
+.dark-mode textarea#user-input {
+  background-color: hsl(235, 14%, 15%);
+  color: hsl(240, 24%, 96%);
+  border: 1px solid hsl(274, 90%, 73%);
+}
+
+.dark-mode textarea#user-input::placeholder {
+  color: hsl(240, 24%, 96%);
 }
 
 .limit-warning-box {
@@ -123,12 +147,14 @@ input[type='checkbox'] {
 
 /* ---------STATS CONTAINER-------- */
 .stats-container {
-  /* border: 1px solid red; */
   display: flex;
   justify-content: space-between;
   gap: 1.5rem;
-  /* padding: 5rem 0; */
   margin-bottom: 2.5rem;
+}
+
+.dark-mode .box {
+  color: #000;
 }
 
 .box {

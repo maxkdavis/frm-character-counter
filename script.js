@@ -4,8 +4,9 @@ const checkboxSetCharLimitEl = document.getElementById('checkbox-set-limit');
 const inputCharLimitEl = document.getElementById('input-char-limit');
 const noSpaceTextEl = document.querySelector('.no-space-text');
 const limitWarningEl = document.querySelector('.limit-warning-box');
-const btnDarkMode = document.querySelector('.btn-mode-dark');
-const btnLightkMode = document.querySelector('.btn-mode-light');
+const logoThemeEl = document.querySelector('.logo-theme');
+const btnMoon = document.querySelector('.btn-moon');
+const btnSun = document.querySelector('.btn-sun');
 let characterCounter = 0;
 let wordCounter = 0;
 let sentenceCounter = 0;
@@ -164,7 +165,7 @@ function renderLetterDensityChart() {
             const percentage = ((value / totalLetters) * 100).toFixed(2); //Calculate % with 2 decimal places
             return `${value} (${percentage}%)`;
           },
-          color: '#000', // Change text color if needed
+          color: getFontColor,
           font: {
             size: 16,
           },
@@ -177,6 +178,7 @@ function renderLetterDensityChart() {
           beginAtZero: true,
           ticks: {
             display: false, // Hides x-axis labels
+            color: getFontColor(),
           },
           grid: {
             display: false,
@@ -193,8 +195,7 @@ function renderLetterDensityChart() {
             font: {
               size: 16,
             },
-            // align: 'start',
-            color: 'black',
+            color: getFontColor(),
           },
         },
       },
@@ -203,11 +204,27 @@ function renderLetterDensityChart() {
   });
 }
 
-//FIX THIS!
-btnDarkMode.addEventListener('click', function () {
-  this.style.classList.toggle('btn-hidden');
-});
+//Dark Mode Functionality for Chart
+//Function to determine the font color based on dark mode
+function getFontColor() {
+  return document.body.classList.contains('dark-mode') ? '#fff' : '#000';
+}
 
-btnLightMode.addEventListener('click', function () {
-  this.style.classList.toggle('btn-hidden');
-});
+//Dark Mode Functionality for rest of app
+function toggleTheme() {
+  document.body.classList.toggle('dark-mode');
+  const isDarkMode = document.body.classList.contains('dark-mode');
+
+  logoThemeEl.src = !isDarkMode ? './assets/images/logo-light-theme.svg' : './assets/images/logo-dark-theme.svg';
+
+  //Toggle button visibility
+  btnMoon.classList.toggle('visible-btn', !isDarkMode);
+  btnMoon.classList.toggle('hidden-btn', isDarkMode);
+  btnSun.classList.toggle('visible-btn', isDarkMode);
+  btnSun.classList.toggle('hidden-btn', !isDarkMode);
+
+  renderLetterDensityChart();
+}
+
+btnMoon.addEventListener('click', toggleTheme);
+btnSun.addEventListener('click', toggleTheme);
