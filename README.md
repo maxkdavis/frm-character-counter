@@ -5,9 +5,9 @@
 
 ## Welcome! 👋
 
-Thanks for viewing! Try out my app(PENDING)
+[Thanks for viewing! Try out my app](https://mkd-character-counter.netlify.app/)
 
-## Resources
+## Resourcesg
 
 ChartJS Library to build the response bar chart. The rest was vanilla JavaScript.
 
